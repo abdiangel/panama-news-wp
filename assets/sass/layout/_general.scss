@@ -1,0 +1,26 @@
+.recentnews-heading {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: $margin-med;
+	margin-bottom: $margin-med;
+	color: $color-primary;
+}
+
+.logo-mini {
+	padding: 0 2rem;
+	transition: transform 0.5s;
+
+	&:hover {
+		transform: scale(1.2);
+	}
+}
+
+.publishing-banner {
+	width: 100%;
+	margin-top: 2rem;
+
+	img {
+		width: 100%;
+	}
+}

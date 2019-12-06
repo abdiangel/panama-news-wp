@@ -42,74 +42,160 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 	## Captions
 	## Galleries
 --------------------------------------------------------------*/
-@import "variables-site/variables-site";
-@import "mixins/mixins-master";
+@import "abstracts/functions";
+@import "abstracts/mixins";
+@import "abstracts/variables";
+@import "abstracts/utils";
 
-/*--------------------------------------------------------------
-# Normalize
---------------------------------------------------------------*/
-@import "normalize";
+@import "base/animations";
+@import "base/base";
+@import "base/typography";
+@import "base/utilities";
 
-/*--------------------------------------------------------------
-# Typography
---------------------------------------------------------------*/
-@import "typography/typography";
+@import "components/recentnew-box";
+@import "components/thumbnail-big";
+@import "components/thumbnail-small";
+@import "components/search";
+@import "components/button";
+@import "components/section-main";
+@import "components/post-main";
+@import "components/infoelements";
+@import "components/res-navigation";
+@import "components/slider";
 
-/*--------------------------------------------------------------
-# Elements
---------------------------------------------------------------*/
-@import "elements/elements";
+@import "layout/footer";
+@import "layout/header";
+@import "layout/navigation";
+@import "layout/general";
 
-/*--------------------------------------------------------------
-# Forms
---------------------------------------------------------------*/
-@import "forms/forms";
+@import "pages/home";
 
-/*--------------------------------------------------------------
-# Navigation
---------------------------------------------------------------*/
-@import "navigation/navigation";
+@import "bootstrap.min";
 
-/*--------------------------------------------------------------
-# Accessibility
---------------------------------------------------------------*/
-@import "modules/accessibility";
 
-/*--------------------------------------------------------------
-# Alignments
---------------------------------------------------------------*/
-@import "modules/alignments";
-
-/*--------------------------------------------------------------
-# Clearings
---------------------------------------------------------------*/
-@import "modules/clearings";
-
-/*--------------------------------------------------------------
-# Widgets
---------------------------------------------------------------*/
-@import "site/secondary/widgets";
-
-/*--------------------------------------------------------------
-# Content
---------------------------------------------------------------*/
-@import "site/site";
-
-/*--------------------------------------------------------------
-# Infinite scroll
---------------------------------------------------------------*/
-@import "modules/infinite-scroll";
-
-/*--------------------------------------------------------------
-# Media
---------------------------------------------------------------*/
-@import "media/media";
-
-h1 {
-	color: red;
+*,
+*::after,
+*::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
 }
 
-a:visited,
-a:link {
-	color: orangered;
+html {
+	// This defines what 1rem is
+	font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5%
+
+	@include respond(tab-land) {
+		// width < 1200?
+		font-size: 56.25%; //1 rem = 9px, 9/16 = 50%
+	}
+
+	@include respond(tab-port) {
+		// width < 900?
+		font-size: 70%; //1 rem = 8px, 8/16 = 50%
+
+		.navigation {
+			display: block;
+		}
+
+		.header__logo {
+			display: none;
+		}
+
+		.responsive-logo {
+			display: block;
+		}
+
+		.header__main-bar {
+			display: none;
+		}
+
+		.header__recentnews {
+			padding-top: 7rem;
+		}
+
+		.header__nav {
+			display: none;
+		}
+
+		.recentnew-box {
+			padding-bottom: 1rem;
+		}
+
+		.thumbnailbig {
+			margin-bottom: 1rem;
+		}
+
+		.footer__nav-list {
+			display: none;
+		}
+
+		.footer__logo {
+			display: none;
+		}
+
+		footer {
+			padding: 2rem;
+		}
+	}
+
+	@include respond(big-desktop) {
+		font-size: 70%; //1rem = 12, 12/16
+	}
+}
+
+body {
+	box-sizing: border-box;
+	font-family: "Lato", sans-serif !important;
+}
+
+::selection {
+	background-color: $color-primary;
+	color: $color-white;
+}
+
+body {
+	font-family: "Lato", sans-serif;
+	font-weight: 400;
+	/*font-size: 16px;*/
+	line-height: 1.7;
+	color: $color-grey-dark;
+}
+
+.h2-title {
+	@include headingfont-big;
+}
+
+.h3-title {
+	@include headingfont-small;
+}
+
+.h4-title {
+	@include headingfont-medium;
+}
+
+.recentnews-heading {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: $margin-med;
+	margin-bottom: $margin-med;
+	color: $color-primary;
+}
+
+.logo-mini {
+	padding: 0 2rem;
+	transition: transform 0.5s;
+
+	&:hover {
+		transform: scale(1.2);
+	}
+}
+
+.publishing-banner {
+	width: 100%;
+
+	img {
+		width: 100%;
+	}
 }

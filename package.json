@@ -12,6 +12,7 @@
     "@babel/core": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/register": "^7.0.0",
+    "@unibeautify/beautifier-php-cs-fixer": "^0.4.0",
     "beepbeep": "^1.2.2",
     "browser-sync": "^2.11.1",
     "eslint": "^5.5.0",
@@ -35,7 +36,8 @@
     "gulp-sourcemaps": "^2.6.2",
     "gulp-uglify": "^3.0.0",
     "gulp-uglifycss": "^1.0.6",
-    "gulp-wp-pot": "^2.0.7"
+    "gulp-wp-pot": "^2.0.7",
+    "unibeautify": "^0.17.0"
   },
   "scripts": {
     "start": "gulp",
@@ -46,5 +48,8 @@
     "images": "gulp images",
     "clearCache": "gulp clearCache",
     "translate": "gulp translate"
+  },
+  "dependencies": {
+    "bootstrap": "^4.4.1"
   }
 }

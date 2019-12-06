@@ -1,0 +1,29 @@
+.button {
+    &,
+    &:visited,
+    &:link {
+        color: $color-white;
+        background-color: $color-primary;
+        padding: 1rem 3rem;
+        text-decoration: none;
+        font-weight: bolder;
+        text-transform: uppercase;
+        transition: all .3s;
+        text-align: center;
+    }
+
+    &:hover,
+    &:active {
+        color: $color-primary;
+        background-color: $color-grey-dark;
+        border-top: 1px solid $color-primary;
+        border-left: 1px solid $color-primary;
+        border-right: 1px solid $color-primary;
+    }
+
+    &--with-thumbnail {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+}

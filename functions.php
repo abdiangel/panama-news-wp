@@ -157,3 +157,35 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+
+/*
+*
+*/
+
+// function wpse260713_randomize_posts( $sql_query, $query ) {
+//     $rand = (int) $query->get( '_randomize_posts_count' );
+//     if( $rand ) {
+//         $found_rows = '';
+//         if( stripos( $sql_query, 'SQL_CALC_FOUND_ROWS' ) !== FALSE ) {
+//             $found_rows = 'SQL_CALC_FOUND_ROWS';
+//             $sql_query = str_replace( 'SQL_CALC_FOUND_ROWS ', '', $sql_query );
+//         }
+//         $sql_query = sprintf( 'SELECT %s wp_posts.* from ( %s ) wp_posts ORDER BY rand() LIMIT %d', $found_rows, $sql_query, $rand );
+//     }
+//     return $sql_query;
+// }
+// add_filter( 'posts_request', 'wpse260713_randomize_posts', 10, 2 );
+
+// Post main banners customization 
+// function dpn_postmain_banners() {
+// 	$wp_customize->add_section('dpn_postmain_banners_section', array(
+// 		'title' => 'Main post banners'
+// 	));
+
+// 	$wp_customize->add_control( new WP_Customize_Control($wp_customize, ''));
+// }
+
+// add_action('customize_register', 'dpn_postmain_banners');
+
+
+

@@ -1,0 +1,84 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  // This defines what 1rem is
+  font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5%
+
+  p {
+    color: $color-black;
+  }
+
+  @include respond(tab-land) {
+    // width < 1200?
+    font-size: 56.25%; //1 rem = 9px, 9/16 = 50%
+  }
+
+  @include respond(tab-port) {
+    // width < 900?
+    font-size: 30%; //1 rem = 8px, 8/16 = 50%
+
+    .navigation {
+      display: block;
+    }
+
+    .header__logo {
+      display: none;
+    }
+
+    .responsive-logo {
+      display: block;
+    }
+
+    .header__main-bar {
+      display: none;
+    }
+
+    .header__recentnews {
+      padding-top: 7rem;
+    }
+
+    .header__nav {
+      display: none;
+    }
+
+    .recentnew-box {
+      padding-bottom: 1rem;
+    }
+
+    .thumbnailbig{
+      margin-bottom: 1rem;
+    }
+
+    .footer__nav-list {
+      display: none;
+    }
+
+    .footer__logo {
+      display: none;
+    }
+
+    footer {
+      padding: 2rem;
+    }
+  }
+
+  @include respond(big-desktop) {
+    font-size: 70%; //1rem = 12, 12/16
+  }
+}
+
+body {
+  box-sizing: border-box;
+  font-family: 'Lato', sans-serif !important;
+}
+
+::selection {
+  background-color: $color-primary;
+  color: $color-white;
+}

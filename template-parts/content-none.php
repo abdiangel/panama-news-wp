@@ -10,11 +10,13 @@
 ?>
 
 <section class="no-results not-found">
-	<header class="page-header">
-		<h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'panama-news' ); ?></h1>
-	</header><!-- .page-header -->
+<div class="container">
+		<header class="page-header">
+			<h4 class="page-title h4-title"><?php esc_html_e( 'No se encontraron posts.', 'panama-news' ); ?></h4>
+		</header><!-- .page-header -->
+</div>
 
-	<div class="page-content">
+	<div class="page-content container search-none">
 		<?php
 		if ( is_home() && current_user_can( 'publish_posts' ) ) :
 
@@ -34,17 +36,15 @@
 		elseif ( is_search() ) :
 			?>
 
-			<p><?php esc_html_e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'panama-news' ); ?></p>
+			<div class="container"><p class="nores-paragraph"><?php esc_html_e( 'Lo siento pero no pudimos encontrar nada que concuerde con tus términos de busqueda.', 'panama-news' ); ?></p></div>
+			<a href="<?php echo get_home_url(); ?>" class="backtohome">Volver al inicio</a>
 			<?php
-			get_search_form();
 
 		else :
 			?>
 
 			<p><?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'panama-news' ); ?></p>
 			<?php
-			get_search_form();
-
 		endif;
 		?>
 	</div><!-- .page-content -->

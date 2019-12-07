@@ -62,6 +62,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 @import "components/infoelements";
 @import "components/res-navigation";
 @import "components/slider";
+@import "components/pagination";
 
 @import "layout/footer";
 @import "layout/header";
@@ -71,7 +72,6 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 @import "pages/home";
 
 @import "bootstrap.min";
-
 
 *,
 *::after,

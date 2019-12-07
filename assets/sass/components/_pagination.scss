@@ -1,0 +1,44 @@
+.pagination {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	width: 100%;
+	justify-content: center;
+	overflow: auto;
+
+	> span {
+		padding: 0.8rem 1rem;
+		line-height: 1;
+		border-radius: 4px;
+		font-size: 1.4rem;
+		border: 1px solid $color-primary;
+		color: $color-primary;
+	}
+
+	> span.current {
+		background-color: $color-primary;
+		color: white;
+	}
+
+	> a {
+		padding: 0.8rem 1rem;
+		line-height: 1;
+		border-radius: 4px;
+		font-size: 1.4rem;
+		border: 1px solid $color-primary;
+		color: $color-primary;
+		text-decoration: none;
+
+		&:hover {
+			color: white;
+			text-decoration: none;
+			background-color: $color-primary;
+		}
+	}
+
+	.page-numbers {
+		&:not(:last-child) {
+			margin-right: 0.5rem;
+		}
+	}
+}

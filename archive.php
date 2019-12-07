@@ -66,29 +66,8 @@ get_header();
                   </i>
                   <span class="infoelements__views-text">250 vistas</span>
                 </div>
-                <div class="section-main__quote">
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Deserunt ullam impedit officiis sapiente quidem id, ipsam et
-                    sunt mollitia enim ipsum explicabo saepe labore odio
-                    blanditiis modi temporibus molestiae laborum. Lorem ipsum
-                    dolor sit amet consectetur adipisicing elit. Ipsam
-                    cupiditate quidem laudantium? Officiis in expedita,
-                    reiciendis eveniet ab iste fugiat suscipit unde voluptates
-                    consequatur sunt, quaerat nulla, deserunt commodi tempore.
-                  </p>
-                </div>
                 <div class="section-main__description">
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Deserunt ullam impedit officiis sapiente quidem id, ipsam et
-                    sunt mollitia enim ipsum explicabo saepe labore odio
-                    blanditiis modi temporibus molestiae laborum Lorem ipsum
-                    dolor sit amet consectetur adipisicing elit. Dolor
-                    consequuntur, nisi veniam hic adipisci quia doloremque quod
-                    omnis explicabo, laudantium id? Praesentium ipsa illo esse
-                    earum ab dignissimos. Libero, magni.
-                  </p>
+                  <?php the_excerpt(); ?>
                 </div>
                 <div class="section-main__button">
                   <a href="<?php echo get_the_permalink(); ?>" class="button button--with-thumbnail">Leer más</a>
@@ -116,9 +95,11 @@ get_header();
                     <?php
                       // the query
                       $post_not_in_btn1;
+                      $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
                       $category = get_queried_object();
                       $thumbnailbig1 = new WP_Query(array(
                         'cat' => $category->term_id,
+                        'paged' => $paged,
                         'posts_per_page' => 6,
                         'post__not_in' => [$post_not_in_mtn],
                       ));
@@ -148,6 +129,25 @@ get_header();
                       </div>
                     </div>
                     <?php endwhile; ?>
+                    <div class="pagination">
+                    <?php         
+                      echo paginate_links( array(
+                          'base'         => str_replace( 999999999, '%#%', esc_url( get_pagenum_link( 999999999 ) ) ),
+                          'total'        => $thumbnailbig1->max_num_pages,
+                          'current'      => max( 1, get_query_var( 'paged' ) ),
+                          'format'       => '?paged=%#%',
+                          'show_all'     => false,
+                          'type'         => 'plain',
+                          'end_size'     => 2,
+                          'mid_size'     => 1,
+                          'prev_next'    => true,
+                          'prev_text'    => sprintf( '<i></i> %1$s', __( 'Sig', 'text-domain' ) ),
+                          'next_text'    => sprintf( '%1$s <i></i>', __( 'Atrás', 'text-domain' ) ),
+                          'add_args'     => false,
+                          'add_fragment' => '',
+                        ) ); ?> 
+                    </div>
+
                     <?php wp_reset_postdata(); ?>
                     <?php endif; ?>
                 </div>

@@ -122,7 +122,8 @@ add_action( 'widgets_init', 'panama_news_widgets_init' );
 function panama_news_scripts() {
 	wp_enqueue_style( 'panama-news-style', get_stylesheet_uri() );
 
-	wp_enqueue_script( 'bundle-js', get_template_directory_uri() . '/js/custom-min.js', array(), '20151215', true );
+	wp_enqueue_script( 'bundle-js', get_template_directory_uri() . '/js/custom.min.js', array(), '20151215', true );
+	wp_enqueue_script( 'bundle-vendor-js', get_template_directory_uri() . '/js/vendor.min.js', array(), '20151215', true );
 	
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -158,34 +159,344 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 }
 
 
-/*
-*
-*/
+//------------------------------------------------------LOGOS-----------------------------------------------------------------------
 
-// function wpse260713_randomize_posts( $sql_query, $query ) {
-//     $rand = (int) $query->get( '_randomize_posts_count' );
-//     if( $rand ) {
-//         $found_rows = '';
-//         if( stripos( $sql_query, 'SQL_CALC_FOUND_ROWS' ) !== FALSE ) {
-//             $found_rows = 'SQL_CALC_FOUND_ROWS';
-//             $sql_query = str_replace( 'SQL_CALC_FOUND_ROWS ', '', $sql_query );
-//         }
-//         $sql_query = sprintf( 'SELECT %s wp_posts.* from ( %s ) wp_posts ORDER BY rand() LIMIT %d', $found_rows, $sql_query, $rand );
-//     }
-//     return $sql_query;
-// }
-// add_filter( 'posts_request', 'wpse260713_randomize_posts', 10, 2 );
+// Banners customization 
+function dpn_logos($wp_customize) {
+	$wp_customize->add_section('dpn_logos_section', array(
+		'title' => 'Editar logos',
+		"description" => 'Sube o elige imágenes para editar logos.'
+	));
 
-// Post main banners customization 
-// function dpn_postmain_banners() {
-// 	$wp_customize->add_section('dpn_postmain_banners_section', array(
-// 		'title' => 'Main post banners'
-// 	));
+	$wp_customize->add_setting('dpn_logos-image1');
 
-// 	$wp_customize->add_control( new WP_Customize_Control($wp_customize, ''));
-// }
+	$wp_customize->add_control( new WP_Customize_Image_Control($wp_customize, 'dpn_logos-image-control1', array(
+			'label' => 'Logo principal',
+			'section' => 'dpn_logos_section',
+			'settings' => 'dpn_logos-image1',
+			'width' => 450,	
+			'height' => 120
+		)));
 
-// add_action('customize_register', 'dpn_postmain_banners');
+	$wp_customize->add_setting('dpn_logos-image2');
 
+	$wp_customize->add_control( new WP_Customize_Image_Control($wp_customize, 'dpn_logos-image-control2', array(
+			'label' => 'Logo principal responsivo',
+			'section' => 'dpn_logos_section',
+			'settings' => 'dpn_logos-image2',
+			'width' => 50,
+			'height' => 50
+		)));
+
+	$wp_customize->add_setting('dpn_logos-image3');
+
+	$wp_customize->add_control( new WP_Customize_Image_Control($wp_customize, 'dpn_logos-image-control3', array(
+			'label' => 'Logo de footer',
+			'section' => 'dpn_logos_section',
+			'settings' => 'dpn_logos-image3',
+			'width' => 425,
+			'height' => 94
+		)));
+}
+
+add_action('customize_register', 'dpn_logos');
+
+
+//------------------------------------------------------SOCIAL-----------------------------------------------------------------------
+
+// Banners customization 
+function dpn_social($wp_customize) {
+	$wp_customize->add_section('dpn_social_section', array(
+		'title' => 'Editar socialmedia',
+		"description" => 'Elige los links de tus redes sociales.'
+	));
+
+	$wp_customize->add_setting( 'dpn_social-linktw', array(
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'themeslug_sanitize_urltw',
+	) );
+	
+	$wp_customize->add_control( 'dpn_social-linktw', array(
+		'type' => 'url',
+		'section' => 'dpn_social_section', // Add a default or your own section
+		'label' => __( 'Link para twitter' ),
+		'description' => __( 'Escribe el link completo hacia tu cuenta de twitter' ),
+		'input_attrs' => array(
+		'placeholder' => __( 'http://www.twitter.com/cuenta' ),
+		),
+	) );
+	
+	function themeslug_sanitize_urltw( $url ) {
+		return esc_url_raw( $url );
+	}
+
+	$wp_customize->add_setting( 'dpn_social-linkfb', array(
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'themeslug_sanitize_urlfb',
+	) );
+	
+	$wp_customize->add_control( 'dpn_social-linkfb', array(
+		'type' => 'url',
+		'section' => 'dpn_social_section', // Add a default or your own section
+		'label' => __( 'Link para Facebook' ),
+		'description' => __( 'Escribe el link completo hacia tu cuenta de facebook' ),
+		'input_attrs' => array(
+		'placeholder' => __( 'http://www.facebook.com/cuenta' ),
+		),
+	) );
+	
+	function themeslug_sanitize_urlfb( $url ) {
+		return esc_url_raw( $url );
+	}
+
+	$wp_customize->add_setting( 'dpn_social-linkig', array(
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'themeslug_sanitize_urlig',
+	) );
+	
+	$wp_customize->add_control( 'dpn_social-linkig', array(
+		'type' => 'url',
+		'section' => 'dpn_social_section', // Add a default or your own section
+		'label' => __( 'Link para Instagram' ),
+		'description' => __( 'Escribe el link completo hacia tu cuenta de Instagram' ),
+		'input_attrs' => array(
+		'placeholder' => __( 'http://www.instagram.com/cuenta' ),
+		),
+	) );
+	
+	function themeslug_sanitize_urlig( $url ) {
+		return esc_url_raw( $url );
+	}
+}
+
+add_action('customize_register', 'dpn_social');
+
+//------------------------------------------------------BANNERS-----------------------------------------------------------------------
+
+// Banners customization 
+function dpn_postmain_banners($wp_customize) {
+	$wp_customize->add_section('dpn_postmain_banners_section', array(
+		'title' => 'Editar banners',
+		"description" => 'Sube o elige imágenes para editar los banners.'
+	));
+
+	$wp_customize->add_setting('dpn_postmain_banners-image1');
+
+	$wp_customize->add_control( new WP_Customize_Image_Control($wp_customize, 'dpn_postmain_banners-image-control1', array(
+			'label' => 'Banner superior index',
+			'section' => 'dpn_postmain_banners_section',
+			'settings' => 'dpn_postmain_banners-image1',
+			'width' => 2500,
+			'height' => 250
+		)));
+
+		$wp_customize->add_setting( 'dpn_postmain_banners-link1', array(
+			'capability' => 'edit_theme_options',
+			'sanitize_callback' => 'themeslug_sanitize_url1',
+		) );
+		
+		$wp_customize->add_control( 'dpn_postmain_banners-link1', array(
+			'type' => 'url',
+			'section' => 'dpn_postmain_banners_section', // Add a default or your own section
+			'label' => __( 'Link para banner superior index' ),
+			'description' => __( 'Custom link output.' ),
+			'input_attrs' => array(
+			'placeholder' => __( 'http://www.google.com' ),
+			),
+		) );
+		
+		function themeslug_sanitize_url1( $url ) {
+			return esc_url_raw( $url );
+		}
+
+	$wp_customize->add_setting('dpn_postmain_banners-image2');
+
+	$wp_customize->add_control( new WP_Customize_Image_Control($wp_customize, 'dpn_postmain_banners-image-control2', array(
+			'label' => 'Banner inferior index',
+			'section' => 'dpn_postmain_banners_section',
+			'settings' => 'dpn_postmain_banners-image2',
+			'width' => 2500,
+			'height' => 250
+		)));
+
+		$wp_customize->add_setting( 'dpn_postmain_banners-link2', array(
+			'capability' => 'edit_theme_options',
+			'sanitize_callback' => 'themeslug_sanitize_url2',
+		) );
+		
+		$wp_customize->add_control( 'dpn_postmain_banners-link2', array(
+			'type' => 'url',
+			'section' => 'dpn_postmain_banners_section', // Add a default or your own section
+			'label' => __( 'Link para banner inferior index' ),
+			'description' => __( 'Custom link output.' ),
+			'input_attrs' => array(
+			'placeholder' => __( 'http://www.google.com' ),
+			),
+		) );
+		
+		function themeslug_sanitize_url2( $url ) {
+			return esc_url_raw( $url );
+		}
+
+	$wp_customize->add_setting('dpn_postmain_banners-image3');
+
+	$wp_customize->add_control( new WP_Customize_Image_Control($wp_customize, 'dpn_postmain_banners-image-control3', array(
+			'label' => 'Banner superior sección',
+			'section' => 'dpn_postmain_banners_section',
+			'settings' => 'dpn_postmain_banners-image3',
+			'width' => 2500,
+			'height' => 250
+		)));
+
+		$wp_customize->add_setting( 'dpn_postmain_banners-link3', array(
+			'capability' => 'edit_theme_options',
+			'sanitize_callback' => 'themeslug_sanitize_url3',
+		) );
+		
+		$wp_customize->add_control( 'dpn_postmain_banners-link3', array(
+			'type' => 'url',
+			'section' => 'dpn_postmain_banners_section', // Add a default or your own section
+			'label' => __( 'Link para banner superior sección' ),
+			'description' => __( 'Custom link output.' ),
+			'input_attrs' => array(
+			'placeholder' => __( 'http://www.google.com' ),
+			),
+		) );
+		
+		function themeslug_sanitize_url3( $url ) {
+			return esc_url_raw( $url );
+		}
+
+	$wp_customize->add_setting('dpn_postmain_banners-image4');
+
+	$wp_customize->add_control( new WP_Customize_Image_Control($wp_customize, 'dpn_postmain_banners-image-control4', array(
+			'label' => 'Banner inferior sección',
+			'section' => 'dpn_postmain_banners_section',
+			'settings' => 'dpn_postmain_banners-image4',
+			'width' => 2500,
+			'height' => 250
+		)));
+
+		$wp_customize->add_setting( 'dpn_postmain_banners-link4', array(
+			'capability' => 'edit_theme_options',
+			'sanitize_callback' => 'themeslug_sanitize_url4',
+		) );
+		
+		$wp_customize->add_control( 'dpn_postmain_banners-link4', array(
+			'type' => 'url',
+			'section' => 'dpn_postmain_banners_section', // Add a default or your own section
+			'label' => __( 'Link para banner inferior sección' ),
+			'description' => __( 'Custom link output.' ),
+			'input_attrs' => array(
+			'placeholder' => __( 'http://www.google.com' ),
+			),
+		) );
+		
+		function themeslug_sanitize_url4( $url ) {
+			return esc_url_raw( $url );
+		}
+
+
+	$wp_customize->add_setting('dpn_postmain_banners-image5');
+
+	$wp_customize->add_control( new WP_Customize_Image_Control($wp_customize, 'dpn_postmain_banners-image-control5', array(
+		'label' => 'Banner primario de post',
+		'section' => 'dpn_postmain_banners_section',
+		'settings' => 'dpn_postmain_banners-image5',
+		'width' => 150,
+		'height' => 400
+	)));
+
+	$wp_customize->add_setting( 'dpn_postmain_banners-link5', array(
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'themeslug_sanitize_url5',
+	) );
+	
+	$wp_customize->add_control( 'dpn_postmain_banners-link5', array(
+		'type' => 'url',
+		'section' => 'dpn_postmain_banners_section', // Add a default or your own section
+		'label' => __( 'Link para banner primario de post' ),
+		'description' => __( 'Custom link output.' ),
+		'input_attrs' => array(
+		'placeholder' => __( 'http://www.google.com' ),
+		),
+	) );
+	
+	function themeslug_sanitize_url5( $url ) {
+		return esc_url_raw( $url );
+	}
+
+	$wp_customize->add_setting('dpn_postmain_banners-image6');
+
+	$wp_customize->add_control( new WP_Customize_Image_Control($wp_customize, 'dpn_postmain_banners-image-control6', array(
+			'label' => 'Banner secundario de post',
+			'section' => 'dpn_postmain_banners_section',
+			'settings' => 'dpn_postmain_banners-image6',
+			'width' => 150,
+			'height' => 400
+		)));
+
+		$wp_customize->add_setting( 'dpn_postmain_banners-link6', array(
+			'capability' => 'edit_theme_options',
+			'sanitize_callback' => 'themeslug_sanitize_url6',
+		) );
+		
+		$wp_customize->add_control( 'dpn_postmain_banners-link6', array(
+			'type' => 'url',
+			'section' => 'dpn_postmain_banners_section', // Add a default or your own section
+			'label' => __( 'Link para banner secundario de post' ),
+			'description' => __( 'Custom link output.' ),
+			'input_attrs' => array(
+			'placeholder' => __( 'http://www.google.com' ),
+			),
+		) );
+		
+		function themeslug_sanitize_url6( $url ) {
+			return esc_url_raw( $url );
+		}
+}
+
+add_action('customize_register', 'dpn_postmain_banners');
+
+//------------------------------------------------------BANNERS-----------------------------------------------------------------------
+
+//------------------------------------------------------VIEWS-----------------------------------------------------------------------
+function gt_get_post_view() {
+    $count = get_post_meta( get_the_ID(), 'post_views_count', true );
+    return "$count vistas";
+}
+function gt_set_post_view() {
+    $key = 'post_views_count';
+    $post_id = get_the_ID();
+    $count = (int) get_post_meta( $post_id, $key, true );
+    $count++;
+    update_post_meta( $post_id, $key, $count );
+}
+function gt_posts_column_views( $columns ) {
+    $columns['post_views'] = 'vistas';
+    return $columns;
+}
+function gt_posts_custom_column_views( $column ) {
+    if ( $column === 'post_views') {
+        echo gt_get_post_view();
+    }
+}
+add_filter( 'manage_posts_columns', 'gt_posts_column_views' );
+add_action( 'manage_posts_custom_column', 'gt_posts_custom_column_views' ); 
+
+
+// split content at the more tag and return an array
+function split_content() {
+
+	global $more;
+	$more = true;
+	$content = preg_split('/<span id="more-d+"></span>/i', get_the_content('more'));
+	for($c = 0, $csize = count($content); $c < $csize; $c++) {
+		$content[$c] = apply_filters('the_content', $content[$c]);
+	}
+	return $content;
+
+}
+//------------------------------------------------------VIEWS-----------------------------------------------------------------------
 
 

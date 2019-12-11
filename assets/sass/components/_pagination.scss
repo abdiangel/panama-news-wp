@@ -42,3 +42,34 @@
 		}
 	}
 }
+
+.comment-list {
+
+    list-style: none;
+
+}
+.search-pagination {
+	justify-content: space-between;
+	width: 90%;
+	margin-top: 1rem;
+	font-size: 1rem;
+	text-transform: uppercase;
+	font-weight: bolder;
+	
+	a {
+		color: $color-primary;
+	}
+
+	a:hover,
+	a:active {
+		color: $color-primary;
+		text-decoration: none;
+		font-size: 1.03rem;
+		transition: all .3s;
+	}
+	
+	i {
+		margin-left: .3rem;
+		margin-right: .3rem;
+	}
+}

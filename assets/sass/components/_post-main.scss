@@ -2,7 +2,7 @@
     margin-top: 2rem;
 
     @media screen and (max-width: 900px) {
-        margin-top: 10rem;
+        margin-top: 3rem;
     }
 
     &__title {
@@ -22,9 +22,10 @@
         position: relative;
         padding-bottom: 4rem;
         margin-right: 2rem;
+        text-align: justify;
 
         p {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
         }
     }
 
@@ -35,7 +36,7 @@
 
     &__imgbg img{
         width: 100%;
-        height: 35rem;
+        height: 40rem;
         border-radius: 5px;
     }
 
@@ -58,16 +59,27 @@
         text-transform: uppercase;
         font-weight: bold;
         color: $color-primary;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
     }
     
-    &__banner {
+    &-banners {
         width: 100%;
-        margin-bottom: 2rem;
+        margin-top: 2.5rem;
     }
+
+}
+
+#main > div > div > div > div.col-md-2.col-sm-4 > div > a:nth-child(1) > img {
+    margin-bottom: 5rem;
 }
 
 .post-main__smnewimg img {
     width: 100%;
-    height: 25rem;
+    height: 20rem;
+    margin-bottom: 1rem;
+
+    @media screen and (max-width: 580px) {
+        height: 30rem;
+    }
 }

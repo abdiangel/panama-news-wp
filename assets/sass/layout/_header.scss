@@ -26,7 +26,7 @@
 	}
 
 	&__hashtag {
-		background-color: $color-grey-dark;
+		background-color: #c5c5c5;
 		color: $color-primary;
 		height: 100%;
 		display: flex;
@@ -159,7 +159,7 @@
 
 		&:hover {
 			color: $color-black;
-			font-weight: bold;
+			font-size: 1.22rem;
 			text-decoration: none;
 		}
 

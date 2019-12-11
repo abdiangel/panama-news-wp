@@ -75,10 +75,17 @@ html {
 
 body {
   box-sizing: border-box;
-  font-family: 'Lato', sans-serif !important;
+  font-family: 'Montserrat', sans-serif;
 }
 
 ::selection {
   background-color: $color-primary;
   color: $color-white;
+}
+
+#primary > main > section:nth-child(2) > div:nth-child(2) > div > div:nth-child(1) > div > div:nth-child(2) > div,
+#primary > main > section:nth-child(2) > div:nth-child(2) > div > div:nth-child(2) > div > div:nth-child(2) > div,
+#primary > main > section.breaking-news.standar-mtop > div:nth-child(2) > div > div:nth-child(2) > div > div:nth-child(2) > div,
+#primary > main > section.breaking-news.standar-mtop > div:nth-child(2) > div > div:nth-child(1) > div > div:nth-child(2) > div {
+  border-right: none;
 }

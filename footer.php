@@ -14,8 +14,9 @@
 	</div><!-- #content -->
 
 	<footer id="colophon" class="site-footer footer">
-	<div class="footer__logo">
-	<img src="<?php echo get_template_directory_uri() . "/assets/imgs/footer-logo.png" ?>" alt="Panamá news logo" />
+	<div class="footer__logo"><a href="<?php echo get_home_url(); ?>">
+	<img src="<?php echo esc_url(get_theme_mod('dpn_logos-image3')) ?>" alt="Panamá news logo" />
+  </a>
       </div>
       <div class="container">
         <div footer__nav>
@@ -29,13 +30,13 @@
         </div>
         <div class="footer__social">
             <i class="footer__social-icon">
-              <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="<?php echo get_theme_mod('dpn_social-linkfb') ?>" target="_blank"><i class="fab fa-facebook-f"></i></a>
             </i>
             <i class="footer__social-icon">
-              <a href="https://twitter.com/dpanamanews" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="<?php echo get_theme_mod('dpn_social-linktw') ?>" target="_blank"><i class="fab fa-twitter"></i></a>
             </i>
             <i class="footer__social-icon">
-              <a href="https://www.instagram.com/dpanamanews/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="<?php echo get_theme_mod('dpn_social-linkig') ?>" target="_blank"><i class="fab fa-instagram"></i></a>
             </i>
           </div>
       </div>

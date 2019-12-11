@@ -16,7 +16,7 @@
 	<meta charset="<?php bloginfo('charset'); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link
-      href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900"
+      href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,700,900"
       rel="stylesheet"
     />
 	<link
@@ -34,7 +34,7 @@
   <div class="responsive-header">
         <div class="responsive-logo">
           <a href="<?php echo get_home_url(); ?>"
-            ><img src="<?php echo get_template_directory_uri() . "/assets/imgs/logo-mini.png" ?>" alt="Panamá news logo pequeño" /></a>
+            ><img src="<?php echo esc_url(get_theme_mod('dpn_logos-image2')) ?>" alt="Panamá news logo responsivo" /></a>
         </div>
         <div class="navigation">
           <input
@@ -73,13 +73,13 @@ wp_nav_menu(array(
         <div class="header__right-elements">
           <div class="header__social">
             <i class="header__social-icon">
-              <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+              <a href="<?php echo get_theme_mod('dpn_social-linkfb') ?>" target="_blank"><i class="fab fa-facebook-f"></i></a>
             </i>
             <i class="header__social-icon">
-              <a href="https://twitter.com/dpanamanews" target="_blank"><i class="fab fa-twitter"></i></a>
+              <a href="<?php echo get_theme_mod('dpn_social-linktw') ?>" target="_blank"><i class="fab fa-twitter"></i></a>
             </i>
             <i class="header__social-icon">
-              <a href="https://www.instagram.com/dpanamanews/" target="_blank"><i class="fab fa-instagram"></i></a>
+              <a href="<?php echo get_theme_mod('dpn_social-linkig') ?>" target="_blank"><i class="fab fa-instagram"></i></a>
             </i>
           </div>
           <div class="header__search">
@@ -97,7 +97,7 @@ wp_nav_menu(array(
 	  <!-- LOGO -->
 	  <div class="header__logo">
     <a href="<?php echo get_home_url(); ?>"
-        ><img src="<?php echo get_template_directory_uri() . "/assets/imgs/logo.png" ?>" alt="Panamá news logo" /></a>
+        ><img src="<?php echo esc_url(get_theme_mod('dpn_logos-image1')) ?>" alt="Panamá news logo" /></a>
 	  </div>
 			<!-- LOGO -->
 			
@@ -118,20 +118,12 @@ wp_nav_menu(array(
 				<!-- RECENT NEWS -->
       <div class="container">
         <?php
-$randomargs = array(
-    'post_type' => 'post',
-    'posts_per_page' => 1,
-    'orderby' => 'date',
-    'order' => 'DESC',
-    'meta_key' => '_thumbnail_id',
-    'no_found_rows' => 'true',
-    '_randomize_posts_count' => 1
-);
-$random = new WP_Query($randomargs); ?>
+
+//Create WordPress Query with 'orderby' set to 'rand' (Random)
+  $the_query = new WP_Query( array ( 'orderby' => 'rand', 'posts_per_page' => '1' ) );
+// output the random post
+while ( $the_query->have_posts() ) : $the_query->the_post();?>
         <div class="header__recentnews">
-        <?php if ($random->have_posts()): ?>
-        <?php while ($random->have_posts()):
-        $random->the_post(); ?>
             <span class="header__recentnews-title">Últimas noticias</span>
             <a href="<?php echo get_post_permalink(); ?>" class="header__recentnews-description">
             <span
@@ -141,8 +133,6 @@ $random = new WP_Query($randomargs); ?>
           <?php
     endwhile; ?>
         <?php wp_reset_postdata(); ?>
-        <?php
-endif; ?>
         </div>
 	  </div>
 			<!-- RECENT NEWS -->

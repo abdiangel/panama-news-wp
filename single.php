@@ -16,7 +16,8 @@ get_header();
 		<div class="container">
             <div class="post-main">
             <div class="row">
-                        <div class="col-md-6 col-sm-12">
+            <?php gt_set_post_view(); ?>
+                        <div class="col-md-7 col-sm-12">
                                 <div class="post-main__imgbg">
 									<?php the_post_thumbnail(); ?>
                                 </div>
@@ -38,7 +39,7 @@ get_header();
                             <i class="fas fa-user-check"></i>
                                             </i>
                                             <span class="infoelements__publisher-text"
-                                              >Alberto Fernandez</span
+                                              ><?php the_author(); ?></span
                                             >
 </div>
                                             <!-- Comments -->
@@ -47,7 +48,7 @@ get_header();
                             <i class="fas fa-comments"></i>
                                             </i>
                                             <span class="infoelements__comment-text"
-                                              >Escriba un comentario</span
+                                              ><a href="#comments-wrapper">Escriba un comentario</a></span
                                             >
 </div>
                                             <!-- Views -->
@@ -55,49 +56,18 @@ get_header();
                                             <i class="infoelements__views-icon">
                             <i class="far fa-eye"></i>
                                             </i>
-                                            <span class="infoelements__views-text">250 vistas</span>
+                                            <span class="infoelements__views-text"><?= gt_get_post_view(); ?></span>
                                             </div>
                                   </div>
-                                  <div class="post-main__quote">
-                                    <p>
-                                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                      Deserunt ullam impedit officiis sapiente quidem id, ipsam et
-                                      sunt mollitia enim ipsum explicabo saepe labore odio
-                                      blanditiis modi temporibus molestiae laborum. Lorem ipsum
-                                      dolor sit amet consectetur adipisicing elit. Ipsam
-                                      cupiditate quidem laudantium? Officiis in expedita,
-                                      reiciendis eveniet ab iste fugiat suscipit unde voluptates
-                                      consequatur sunt, quaerat nulla, deserunt commodi tempore.
-                                    </p>
-                                  </div>
                                   <div class="post-main__description">
                                     <p>
-                                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                      Deserunt ullam impedit officiis sapiente quidem id, ipsam et
-                                      sunt mollitia enim ipsum explicabo saepe labore odio
-                                      blanditiis modi temporibus molestiae laborum Lorem ipsum
-                                      dolor sit amet consectetur adipisicing elit. Dolor
-                                      consequuntur, nisi veniam hic adipisci quia doloremque quod
-                                      omnis explicabo, laudantium id? Praesentium ipsa illo esse
-                                      earum ab dignissimos. Libero, magni.
+                                      <?php the_content();?>
                                     </p>
                                   </div>
-                                  <h4 class="post-main__subtitle">Subtítulo</h4>
-                                  <div class="post-main__description">
-                                        <p>
-                                          Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                          Deserunt ullam impedit officiis sapiente quidem id, ipsam et
-                                          sunt mollitia enim ipsum explicabo saepe labore odio
-                                          blanditiis modi temporibus molestiae laborum Lorem ipsum
-                                          dolor sit amet consectetur adipisicing elit. Dolor
-                                          consequuntur, nisi veniam hic adipisci quia doloremque quod
-                                          omnis explicabo, laudantium id? Praesentium ipsa illo esse
-                                          earum ab dignissimos. Libero, magni.
-                                        </p>
-                                    </div>
                                 </div>
+                                <div id="comments-wrapper"><?php comments_template();?></div>
                         </div>
-                    <div class="col-md-4 col-sm-8">
+                    <div class="col-md-3 col-sm-8">
                         <div class="post-main__rightwrapper">
                             <div class="post-main__subtitle">Noticias relacionadas</div>
 
@@ -138,10 +108,10 @@ get_header();
                         </div>
                     </div>
                     <div class="col-md-2 col-sm-4">
-<div class="Post-main-banners">
-                          <div class="post-main__banner post-main__banner1"><img src="assets/post-placeholder.png" alt="Publishing banner"></div>
-                          <div class="post-main__banner post-main__banner2"><img src="assets/post-placeholder.png" alt="Publishing banner"></div>
-</div>
+                    <div class="Post-main-banners">
+                    <a href="<?php echo get_theme_mod('dpn_postmain_banners-link5') ?>"><img src="<?php echo esc_url(get_theme_mod('dpn_postmain_banners-image5')) ?>" alt="Publicidad" /></a>
+                    <a href="<?php echo get_theme_mod('dpn_postmain_banners-link6') ?>"><img src="<?php echo esc_url(get_theme_mod('dpn_postmain_banners-image6')) ?>" alt="Publicidad" /></a>
+                    </div>
                     </div>
                 </div>
             </div>

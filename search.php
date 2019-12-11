@@ -41,9 +41,14 @@ get_header();
 									 */
 									get_template_part( 'template-parts/content', 'search' );
 					
-								endwhile;
-					
-								the_posts_navigation();
+								endwhile;?>
+								
+<div class="pagination search-pagination">
+									<div class="nav-previous alignleft"><i class="fas fa-chevron-left"></i><?php previous_posts_link( 'Noticias antiguas' ); ?></div>
+									<div class="nav-next alignright"><?php next_posts_link( 'Noticias recientes' ); ?><i class="fas fa-chevron-right"></i></div>
+</div>
+
+								<?php the_posts_navigation();
 					
 							else :
 					

@@ -18,12 +18,11 @@ get_header();
     <main class="site-main">
       <div class="container">
         <div class="main-slider">
-            <?php
-              echo do_shortcode('[smartslider3 slider=3]');
-            ?>
         </div>
         <div class="publishing-banner">
-            <img src="<?php echo get_template_directory_uri() . "/assets/imgs/pub-banner.png" ?>" alt="Publicidad" />
+        <a href="<?php echo get_theme_mod('dpn_postmain_banners-link1') ?>">
+            <img src="<?php echo esc_url(get_theme_mod( 'dpn_postmain_banners-image1' )); ?>" alt="Publicidad">
+        </a>
         </div>
         <section class="recentnews-section">
           <div class="row">
@@ -162,11 +161,13 @@ get_header();
                   <div class="thumbnailbig__description">
                     <?php the_excerpt(); ?>
                   </div>
-                  <i class="thumbnailbig__icon">
-                    <i class="fas fa-clock"></i>
-                  </i>
-                  <span class="thumbnailbig__timestamp"><?php the_date(); ?></span>
-                  <a href="<?php echo get_the_permalink(); ?>" class="button button--with-thumbnail">Leer más</a>
+<div class="thumbnailbig__timewrap">
+                    <i class="thumbnailbig__icon">
+                      <i class="fas fa-clock"></i>
+                    </i>
+                    <span class="thumbnailbig__timestamp"><?php the_date(); ?></span>
+                    <a href="<?php echo get_the_permalink(); ?>" class="button button--with-thumbnail">Leer más</a>
+</div>
                 </div>
                 <?php endwhile; ?>
                 <?php wp_reset_postdata(); ?>
@@ -421,7 +422,13 @@ get_header();
           </div>
         </section>
 
-
+<div class="container">
+          <div class="publishing-banner">
+          <a href="<?php echo get_theme_mod('dpn_postmain_banners-link2') ?>">
+            <img src="<?php echo esc_url(get_theme_mod('dpn_postmain_banners-image2')) ?>" alt="Publicidad" />
+          </a>
+          </div>
+</div >
 
     </main><!-- #main -->
   </div><!-- #primary -->

@@ -58,7 +58,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 	color: #00164c;
 	margin-top: 1.5rem;
 	text-transform: uppercase;
-	font-size: 2.5rem;
+	font-size: 2.3rem;
 	font-weight: 600;
 }
 
@@ -80,4 +80,8 @@ ORDER: Base + typography > general layout + grid > page layout > components
 	text-transform: uppercase;
 	font-weight: 600;
 	letter-spacing: 2px;
+
+	@media screen and (max-width: 400px) {
+		font-size: 1.5rem;
+	}
 }

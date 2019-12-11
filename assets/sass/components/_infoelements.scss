@@ -7,7 +7,19 @@
     display: flex;
     flex-wrap: wrap;
 
-    & span {
+    span {
         margin-right: 1rem;
+        margin-left: .3rem;
+    }
+
+    a {
+        font-size: 1.2rem;
+        color: $color-primary-light;
+    }
+
+    a:hover,
+    a:active {
+        font-size: 1.2rem;
+        color: $color-primary-light;
     }
 }

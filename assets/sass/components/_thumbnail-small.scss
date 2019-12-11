@@ -9,7 +9,7 @@
         height: 20rem;
         padding: 1.5rem;
 
-        @media screen and (max-width: 750px) {
+        @media screen and (max-width: 780px) {
             height: 30rem;
         }
     }
@@ -43,6 +43,11 @@
         height: 10rem;
         overflow: hidden;
         -webkit-box-orient: vertical;
+
+
+        @media screen and (max-width: 800px) {
+            height: 15rem;
+        }
     }
 
     &__icon {
@@ -50,22 +55,27 @@
         margin-left: 1rem;
         font-size: 1.5rem;
         position: relative;
-        top: 3px;
+        top: 0px;
         left: 0px;
     }
 
     &__timestamp {
         color: $color-primary-light;
-        margin-left: .5rem;
+        margin-left: 0rem;
     }
 
     &__timewrapper {
-        font-size: 1.1rem;
+        font-size: 1rem;
         font-weight: bold;
     }
 
     &--border {
         border-right: 1px solid $color-primary;
+
+        @media screen and (max-width: 760px) {
+            border-right: none;
+            border-bottom: 3px solid $color-primary;
+        }
     }
 
 }

@@ -1,0 +1,90 @@
+.comments-area {
+    border: 2px solid $color-primary;
+    padding: 1rem;
+    border-radius: .3rem;
+}
+
+.comments-title {
+    display: none;
+}
+
+.comment-reply-title {
+    text-transform: uppercase;
+    color: $color-primary;
+    font-size: 1.5rem;
+    font-weight: bolder;
+    border-bottom: 2px solid $color-primary;
+    width: 10rem;
+}
+
+.comment-awaiting-moderation {
+    color: $color-primary;
+    margin: 1rem 0;
+}
+
+.fn {
+    text-transform: uppercase;
+    font-size: 1.3rem;
+    font-weight: bold;
+
+
+    a {
+        color: $color-primary;
+        margin-left: 1rem;
+        margin-right: .5rem;
+        margin-bottom: 1rem;
+    }
+
+    a:link,
+    a:active {
+        color: $color-primary;
+        text-decoration: none;
+    }
+}
+
+.comment-content {
+    color: $color-black;
+    font-size: 1.3rem;
+    border-left: 1px solid $color-primary;
+    margin-left: 1rem;
+    padding-left: 1rem;
+}
+
+.comment-form-comment label {
+    display: block;
+    text-transform: uppercase;
+    font-weight: bolder;
+}
+
+.comment-form-author,
+.comment-form-email,
+.comment-form-url {
+    color: $color-primary;
+    font-size: 1.3rem;
+    
+    input {
+        margin-left: 1rem;
+    }
+}
+
+.vcard img{
+    display: none;
+}
+
+.says {
+    color: $color-black;
+}
+
+.reply {
+    display: none;
+}
+
+.form-submit input{
+    margin-top: 1rem;
+    font-size: 1rem;
+    font-weight: bolder;
+    text-transform: uppercase;
+    padding: .5rem;
+    border: 1px solid $color-primary;
+    border-radius: 0.3rem;
+}

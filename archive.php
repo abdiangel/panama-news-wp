@@ -28,6 +28,7 @@ get_header();
                   $mainthumbnail->the_post(); 
                 ?>
                 <?php $post_not_in_mtn = get_the_ID(); ?>
+                <?php gt_set_post_view(); ?>
 
         <h2 class="section-main__title h2-title"><?php echo single_cat_title(); ?></h2>
         <div class="container">
@@ -64,7 +65,7 @@ get_header();
                   <i class="infoelements__views-icon">
                   <i class="far fa-eye"></i>
                   </i>
-                  <span class="infoelements__views-text">250 vistas</span>
+                  <span class="infoelements__views-text"><?= gt_get_post_view(); ?></span>
                 </div>
                 <div class="section-main__description">
                   <?php the_excerpt(); ?>
@@ -81,9 +82,11 @@ get_header();
                 <?php endif; ?>
       </section>
       <div class="container">
-        <div class="publishing-banner">
-          <img src="<?php echo get_template_directory_uri() . "/assets/imgs/pub-banner.png" ?>" alt="Panamá news logo" />
-        </div>
+          <div class="publishing-banner">
+          <a href="<?php echo get_theme_mod('dpn_postmain_banners-link3') ?>">
+              <img src="<?php echo esc_url(get_theme_mod('dpn_postmain_banners-image3')) ?>" alt="Publicidad" />
+          </a>
+          </div>
       </div>
       
       <!--------------------------------------------------- OTHER NEWS --------------------------------------------------------------->
@@ -129,7 +132,7 @@ get_header();
                       </div>
                     </div>
                     <?php endwhile; ?>
-                    <div class="pagination">
+                    <div class="pagination standar-mtop">
                     <?php         
                       echo paginate_links( array(
                           'base'         => str_replace( 999999999, '%#%', esc_url( get_pagenum_link( 999999999 ) ) ),
@@ -155,7 +158,9 @@ get_header();
 
               <div class="container">
               <div class="publishing-banner">
-              <img src="<?php echo get_template_directory_uri() . "/assets/imgs/pub-banner.png" ?>" alt="Panamá news logo" />
+              <a href="<?php echo get_theme_mod('dpn_postmain_banners-link4') ?>">
+              <img src="<?php echo esc_url(get_theme_mod('dpn_postmain_banners-image4')) ?>" alt="Publicidad" />
+              </a>
               </div>
               </div>
 
